@@ -1,62 +1,38 @@
 'use client'
-
-import { Fingerprint } from "lucide-react"
-import { Button } from "./ui/button"
-import { CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card"
-import { Input } from "./ui/input"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "./ui/form"
-import { z } from "zod"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-
-const formSchema = z.object({
-  email: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-})
+import { Github } from "lucide-react"
+import { authClient } from "@/lib/auth-client"
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { toast } from "sonner"
+import { Loading } from "./loading-spinner"
+import { MotionButton } from "./motion-components"
 
 export const Login = () => {
-    const form = useForm<z.infer<typeof formSchema>>({
-        // @ts-ignore Because of weird bug in react-hook-form
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-            email: "",
-        },
-    })
+    const [isLoading, setIsLoading] = useState(false)
+    const router = useRouter()
 
-    const handleSubmit = (values: z.infer<typeof formSchema>) => {
-        console.log("Form submitted with values:", values);
+    const handleClick = async () => {
+        await authClient.signIn.social({
+            provider: 'github',
+            callbackURL: '/app',
+            // newUserCallbackURL: `${window.location.origin}/app/onboarding`,
+        }, {
+            onRequest: () => setIsLoading(true),
+            onSuccess: () => {router.push('/app')},
+            onError: (error) => {
+                console.error('Login error:', error)
+                toast.error('Failed to log in. Please try again.', {
+                    description: error.error.message || 'An unexpected error occurred.',
+                });
+                setIsLoading(false)
+            }
+        })
     }
 
     return (<>
-        <CardHeader>
-            <CardTitle className="text-2xl font-semibold">Log into an account</CardTitle>
-            <CardDescription>Create an account with email and biometric data. You don't need password!</CardDescription>
-        </CardHeader>
-        <Form {...form}>
-            <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
-                <CardContent>
-                    <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>E-mail</FormLabel>
-                                <FormControl>
-                                    <Input type="email" required placeholder="test@example.com" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                </CardContent>
-                <CardFooter>
-                    <Button className="text-foreground w-full cursor-pointer" type="submit">
-                        <Fingerprint size={48} />
-                        Log in using Passkey
-                    </Button>
-                </CardFooter>
-            </form>
-        </Form>
+        <MotionButton className="w-full" type="submit" onClick={handleClick} disabled={isLoading}>
+            { isLoading ? <Loading /> :  <Github size={48} /> }
+            Log in with Github
+        </MotionButton>
     </>)
 }
