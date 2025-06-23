@@ -16,7 +16,7 @@ export default function AppNewWidgetPage() {
                 <div className={cn("mt-10 grid lg:grid-cols-2 grid-cols-1 gap-6", {
                     'flex justify-center': Object.keys(widgetsList).length <= 1
                 })}>
-                    {Object.entries(widgetsList).reverse().map(([key, element], index) => (
+                    {Object.entries(widgetsList).map(([key, element], index) => (
                         <TemplateCard
                             key={key}
                             index={index}

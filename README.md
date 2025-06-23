@@ -2,10 +2,12 @@
 ```
 <parent>/<error-code>
 ```
-|Parent|Letter code|
+|Parent|Meaning|
 |-----|-----|
 |auth|Auth Error|
+|create-widget|Widget creation process - server action code|
 
-|Type|Number|
+|Type|Message|
 |-----|-----|
 |not-authenicated|Not authenicated|
+|template-dont-exists|Template don't exists|
