@@ -11,6 +11,7 @@ export const counter = pgTable("widget_counter", {
     goal: integer('goal'),
     title: text('title').notNull().$default(() => 'Counter'),
     createdAt: timestamp('created_at').$defaultFn(() => new Date()).notNull(),
+    icon: text('icon').notNull(),
 })
 
 export const counter_history = pgTable("widget_counter_history", {

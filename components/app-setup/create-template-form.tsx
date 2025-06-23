@@ -28,6 +28,7 @@ export const CreateTemplateForm = ({ widget }: { widget: WidgetElement }) => {
 
     const onSubmit = async (data: z.infer<typeof schema>) => {
         setIsLoading(true)
+        console.log(data, schema)
         const [error] = await catchError(createWidget(widget.code, data))
         if (error) {
             handleError(error, router)
@@ -40,7 +41,7 @@ export const CreateTemplateForm = ({ widget }: { widget: WidgetElement }) => {
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="relative w-full md:w-2/5 mx-auto">
-                <div className="flex flex-col gap-y-8">
+                <div className="flex flex-col gap-y-8 pb-10">
                     {widget.form.map((field, index) => {
                         const name = field.codeName;
                         return (

@@ -8,6 +8,8 @@ export function schemaFromWidget(widget: WidgetElement) {
         switch (field.type) {
             case 'string':
                 zodType = z.string()
+                if (field.max) zodType = zodType.max(field.max)
+                if (field.optional) zodType = zodType.optional()
                 break
             case 'number':
                 zodType = z.number()

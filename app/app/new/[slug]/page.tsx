@@ -25,7 +25,7 @@ export default async function SpecificNewWidgetPage({
                     <Return />
                 </Link>
             </div>
-            <div className="flex flex-col items-center md:mt-20 mt-12 text-center md:pb-20 pb-12">
+            <div className="flex flex-col items-center md:mt-20 mt-2 text-center md:pb-20 pb-10">
                 <div className="h-72 relative w-full">
                     <MotionImage
                         src={widget.icon}
@@ -34,7 +34,7 @@ export default async function SpecificNewWidgetPage({
                         fill
                     />
                 </div>
-                <h2 className="text-xl mt-10 tracking-tight">{widget.name}</h2>
+                <h2 className="text-xl mt-4 tracking-tight">{widget.name}</h2>
                 <p className="max-w-[80ch] text-muted-foreground">{widget.description}</p>
             </div>
             <CreateTemplateForm

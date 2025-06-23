@@ -5,7 +5,7 @@ import { MotionImage } from "../motion-components"
 export const TemplateCard = ({ name, description, icon, code, index }: { name: string, description: string, icon: string, code: string, index: number }) => {
     return (
         <Link href={`/app/new/${code}`}>
-            <div className={`w-[400px] h-fit border rounded-notion shadow-notion hover:bg-muted/30 animate-slide-up transition-transform`} style={{ animationDelay: `${index * 0.2}s` }}>
+            <div className={`md:w-[400px] w-full h-fit border rounded-notion shadow-notion hover:bg-muted/30 animate-slide-up transition-transform`} style={{ animationDelay: `${index * 0.2}s` }}>
                 <div className="p-4 h-40">
                     <div className="w-full h-full relative">
                         <MotionImage

@@ -11,36 +11,44 @@ export function RenderFormField({ field, name, control }: { field: WidgetElement
         <FormField
             name={name}
             control={control}
-            render={({ field: controllerField }) => (
-                <FormItem className={cn({
-                    'flex justify-between': field.type === 'checkbox',
-                })}>
-                    <FormLabel className="font-sans text-lg font-normal">{field.label}</FormLabel>
-                    <FormControl>
-                        {field.type === 'checkbox' ? (
-                            <Switch
-                                checked={!!controllerField.value}
-                                onCheckedChange={controllerField.onChange}
-                                className="w-10 h-[1.5rem]"
-                            />
-                        ) : field.type === 'number' ? (
-                            <NumberInput
-                                placeholder={field.placeholder}
-                                value={controllerField.value ?? ''}
-                                onChange={controllerField.onChange}
-                            />
-                        ) : (
-                            <Input
-                                type={'text'}
-                                placeholder={field.placeholder}
-                                value={controllerField.value ?? ''}
-                                onChange={controllerField.onChange}
-                            />
-                        )}
-                    </FormControl>
-                    <FormMessage />
-                </FormItem>
-            )}
+            defaultValue={field.defaultValue}
+            render={({ field: controllerField }) => {
+                const value = controllerField.value !== undefined && controllerField.value !== null
+                    ? controllerField.value
+                    : field.defaultValue;
+                return (
+                    <FormItem className={cn({
+                        'flex justify-between': field.type === 'checkbox',
+                    })}>
+                        <FormLabel className="font-sans text-lg font-normal">{field.label} {field.optional && <span className="text-muted-foreground/70">(optional)</span>}</FormLabel>
+                        <FormControl>
+                            {field.type === 'checkbox' ? (
+                                <Switch
+                                    checked={!!value}
+                                    onCheckedChange={controllerField.onChange}
+                                    className="w-10 h-[1.5rem]"
+                                />
+                            ) : field.type === 'number' ? (
+                                <NumberInput
+                                    placeholder={field.placeholder}
+                                    value={value ?? ''}
+                                    onChange={controllerField.onChange}
+                                    min={0}
+                                />
+                            ) : (
+                                <Input
+                                    type={'text'}
+                                    placeholder={field.placeholder}
+                                    value={value ?? ''}
+                                    onChange={controllerField.onChange}
+                                    maxLength={field.max}
+                                />
+                            )}
+                        </FormControl>
+                        <FormMessage />
+                    </FormItem>
+                )
+            }}
         />
     )
 }

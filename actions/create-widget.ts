@@ -7,6 +7,7 @@ import { checkSession } from "@/lib/auth"
 import { catchError } from "@/lib/catch-error"
 import { headers } from "next/headers"
 import { widgetsList } from "@/config/available-widgets"
+import { isSingleEmoji } from "@/utils/is-single-emoji"
 
 export const createWidget = async (
     type: WidgetElement["code"],
@@ -42,7 +43,7 @@ export const createWidget = async (
 
 const createCounterWidget = async (
     session: { user: { id: string }},
-    data: { title: string, goal: number }
+    data: { title: string, goal: number, icon?: string }
 ) => {
     if (!data.title || !data.goal) {
         const error = new Error('Title and goal are required')
@@ -54,12 +55,23 @@ const createCounterWidget = async (
         error.name = 'create-widget/validation-error'
         throw error
     }
+    if (data.icon && typeof data.icon !== 'string') {
+        const error = new Error('Icon must be a string')
+        error.name = 'create-widget/validation-error'
+        throw error
+    }
+    
+    const iconValue =
+        typeof data.icon === "string" && isSingleEmoji(data.icon)
+            ? data.icon
+            : data.title.slice(0, 2).toUpperCase();
 
     const [error] = await catchError(db.insert(counter).values({
         id: crypto.randomUUID(),
         title: data.title,
         userId: session.user.id,
-        goal: data.goal
+        goal: data.goal,
+        icon: iconValue,
     }))
 
     if (error) {

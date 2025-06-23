@@ -6,11 +6,11 @@ import { cn } from "@/lib/utils"
 
 export default function AppNewWidgetPage() {
     return (
-        <div className="md:px-10 pt-5 pb-15">
+        <div className="md:px-10 px-5 pt-5 pb-15">
             <Link href="/app">
                 <Return />
             </Link>
-            <div className="flex flex-col justify-center w-fit mx-auto">
+            <div className="flex flex-col justify-center w-fit mx-auto mt-4">
                 <h1 className="text-center text-2xl font-semibold">Add new widget</h1>
                 <p className="text-center text-base text-muted-foreground">Select template for widget from list below</p>
                 <div className={cn("mt-10 grid lg:grid-cols-2 grid-cols-1 gap-6", {

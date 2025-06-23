@@ -16,7 +16,7 @@ export default async function App() {
     if (error) {
         console.error(error)
         toast.error(error.message)
-        return <p>error</p>
+        throw new Error("Failed to fetch widgets")
     }
     if (counterWidgets.length < 1) return (
         <NoWidgetScreen />
