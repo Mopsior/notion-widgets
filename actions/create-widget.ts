@@ -10,7 +10,7 @@ import { widgetsList } from "@/config/available-widgets"
 
 export const createWidget = async (
     type: WidgetElement["code"],
-    data: any // Adjust the type as needed based on your form data structure
+    data: any
 ) => {
     console.log(type, data)
     const session = await checkSession({
