@@ -3,6 +3,7 @@ import { InputHTMLAttributes } from "react";
 export interface WidgetFormFieldBase {
     codeName: string;
     label: string;
+    description?: string;
     placeholder?: InputHTMLAttributes<HTMLInputElement>['placeholder'];
     type: 'string' | 'number' | 'checkbox';
     optional?: boolean;
@@ -72,6 +73,8 @@ export const widgetsList: WidgetElement[] = [
             {
                 codeName: 'goal',
                 label: 'Goal:',
+                description: 'You will receive notifications when your goal is reached.',
+
                 placeholder: 'e.g. My workout',
                 defaultValue: 'My workout',
                 type: 'string'
@@ -85,7 +88,8 @@ export const widgetsList: WidgetElement[] = [
             },
             {
                 codeName: 'active',
-                label: 'Active?',
+                label: 'Subscribe to notifications',
+                description: 'You will receive notifications when your goal is reached.',
                 defaultValue: true,
                 type: 'checkbox'
             }
