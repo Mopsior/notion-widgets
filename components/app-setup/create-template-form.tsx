@@ -55,16 +55,7 @@ export const CreateTemplateForm = ({ widget }: { widget: WidgetElement }) => {
                     })}
                 </div>
                 <div className="fixed md:w-2/5 w-full bottom-5 left-1/2 -translate-x-1/2 px-5">
-                    <MotionButton
-                        variant={'notion'}
-                        size={'notion'}
-                        disabled={isLoading}
-                        type="submit"
-                        className=" shadow-notion w-full"
-                    >
-                        {isLoading && <Loading />}
-                        Use Template
-                    </MotionButton>
+
                 </div>
             </form>
         </Form>

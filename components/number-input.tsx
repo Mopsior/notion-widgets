@@ -11,7 +11,7 @@ type NumberInputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onCha
 };
 
 export const NumberInput = ({ value, onChange, min = 0, ...props }: NumberInputProps) => {
-  const numValue = value === '' || value === undefined ? '' : Number(value)
+  const numValue = value === '' || value === 0 ? '' : Number(value)
 
   const setValue = (val: number | '') => {
     if (onChange) onChange(val)
