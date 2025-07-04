@@ -44,7 +44,7 @@ export const GoalCounterForm = () => {
 
     const nameValue = form.watch('name') || defaultName;
     return (
-        <div className="w-full px-5 absolute bottom-5 lg:w-1/3 left-1/2 -translate-x-1/2">
+        <div className="w-full px-5 absolute bottom-5 md:w-2/3 lg:w-1/3 left-1/2 -translate-x-1/2">
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(handleSubmit)}>
                     <Accordion type="single" collapsible>
