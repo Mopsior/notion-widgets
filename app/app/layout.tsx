@@ -7,10 +7,10 @@ export default async function AppLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    // const session = await checkSession({
-    //     headers: await headers()
-    // })
-    // if (!session) return redirect('/login')
+    const session = await checkSession({
+        headers: await headers()
+    })
+    if (!session) return redirect('/login')
 
     return (
         <>

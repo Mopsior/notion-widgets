@@ -1,4 +1,3 @@
-
 import db from "@/db";
 import * as schema from "@/db/schema";
 import { betterAuth } from "better-auth";

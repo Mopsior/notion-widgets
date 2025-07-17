@@ -1,4 +1,4 @@
-import { GoalCounterForm } from "@/components/app-setup/forms/goal-counter";
+import { GoalCounterForm } from "@/components/app-setup/forms/goal-counter/goal-counter";
 import { MotionImage } from "@/components/motion-components";
 
 export default function CounterNewWidgetPage() {
@@ -10,16 +10,11 @@ export default function CounterNewWidgetPage() {
                     alt={`Goal counter widget showcase`}
                     layoutId={`goal-counter-image`}
                     fill
-                    />
+                />
             </div>
             <h2 className="text-xl mt-4 tracking-tight">Goal counter</h2>
             <p className="max-w-[80ch] text-muted-foreground">Track your progress with basic counter. Perfect to keep workouts, things to collect etc.</p>
         </div>
         <GoalCounterForm />
-
-
-        {/* <CreateTemplateForm
-            widget={widget}
-            /> */}
-</>)
+    </>)
 }

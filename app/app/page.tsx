@@ -6,6 +6,9 @@ import { checkSession } from "@/lib/auth"
 import { headers } from "next/headers"
 import { catchError } from "@/lib/catch-error"
 import { toast } from "sonner"
+import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarShortcut, MenubarTrigger } from "@/components/ui/menubar"
+import { KeyRound, LogOut, Settings } from "lucide-react"
+import Link from "next/link"
 
 export default async function App() {
     const session = await checkSession({
@@ -22,11 +25,36 @@ export default async function App() {
         <NoWidgetScreen />
     )
 
-    return (<>
-        {counterWidgets.map(({id, goal}) => (
-            <div key={id}>
-                <p>goal: {goal}</p>
-            </div>
-        ))}
-    </>)
+    return (
+        <div className="p-4">
+            <Menubar className="w-fit">
+                <MenubarMenu>
+                    <MenubarTrigger>File</MenubarTrigger>
+                    <MenubarContent>
+                        <MenubarItem>
+                            New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                        </MenubarItem>
+                        <MenubarItem>New Window</MenubarItem>
+                        <MenubarSeparator />
+                        <MenubarItem>Share</MenubarItem>
+                        <MenubarSeparator />
+                        <MenubarItem>Print</MenubarItem>
+                    </MenubarContent>
+                </MenubarMenu>
+                <MenubarMenu>
+                    <MenubarTrigger>Account</MenubarTrigger>
+                    <MenubarContent>
+                        <Link href={'/app/settings'}>
+                            <MenubarItem className="cursor-pointer"><Settings />Settings</MenubarItem>
+                        </Link>
+                        <Link href={'/app/settings/api-keys'}>
+                            <MenubarItem className="cursor-pointer"><KeyRound />API Keys</MenubarItem>
+                        </Link>
+                        <MenubarSeparator />
+                        <MenubarItem variant="destructive"><LogOut />Log out</MenubarItem>
+                    </MenubarContent>
+                </MenubarMenu>
+            </Menubar>
+        </div>
+    )
 }
