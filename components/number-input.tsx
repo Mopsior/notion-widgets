@@ -11,7 +11,7 @@ type NumberInputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onCha
 };
 
 export const NumberInput = ({ value, onChange, min = 0, ...props }: NumberInputProps) => {
-  const numValue = value === '' || value === undefined ? '' : Number(value)
+  const numValue = value === '' || value === 0 ? '' : Number(value)
 
   const setValue = (val: number | '') => {
     if (onChange) onChange(val)
@@ -22,7 +22,7 @@ export const NumberInput = ({ value, onChange, min = 0, ...props }: NumberInputP
       <Button
         type="button"
         variant="secondary"
-        className="border border-input rounded-notion rounded-r-none border-r-0"
+        className="border border-input rounded-l-notion rounded-r-none border-r-0"
         onClick={() => setValue(Math.max(min, (typeof numValue === 'number' ? numValue : 0) - 1))}
         tabIndex={-1}
       >
@@ -35,13 +35,13 @@ export const NumberInput = ({ value, onChange, min = 0, ...props }: NumberInputP
           const val = e.target.value
           setValue(val === '' ? '' : Number(val))
         }}
-        className="rounded-none"
+        className="border-x-0 "
         {...props}
       />
       <Button
         type="button"
         variant="secondary"
-        className="border border-input rounded-notion rounded-l-none border-l-0"
+        className="border border-input rounded-r-notion rounded-l-none border-l-0"
         onClick={() => setValue(Math.max(min, (typeof numValue === 'number' ? numValue : 0) + 1))}
         tabIndex={-1}
       >

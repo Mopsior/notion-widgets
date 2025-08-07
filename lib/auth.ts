@@ -1,4 +1,3 @@
-
 import db from "@/db";
 import * as schema from "@/db/schema";
 import { betterAuth } from "better-auth";
@@ -18,7 +17,12 @@ export const auth = betterAuth({
     }
   },
   plugins: [
-    apiKey(),
+    apiKey({
+      rateLimit: {
+        timeWindow: 1000 * 60 * 60, // 1 hour
+        maxRequests: 100
+      }
+    }),
     nextCookies() // Must be last
   ]
 });

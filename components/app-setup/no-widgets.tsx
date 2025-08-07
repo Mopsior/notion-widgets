@@ -30,7 +30,6 @@ const AddWidgetButton = (props: React.ComponentPropsWithoutRef<typeof MotionButt
     return (
         <MotionButton
             size={'notion'}
-            variant={'notion'}
             whileTap={{ scale: 0.95 }}
             {...props}
         >
