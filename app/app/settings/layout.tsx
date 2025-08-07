@@ -1,6 +1,6 @@
 import { Navigationitem } from "@/components/navigation-item";
 import { Return } from "@/components/return";
-import { KeyRound } from "lucide-react";
+import { KeyRound, UserRoundPen } from "lucide-react";
 import Link from "next/dist/client/link";
 
 export default async function SettingsLayout({
@@ -9,26 +9,21 @@ export default async function SettingsLayout({
     children: React.ReactNode;
 }>) {
     return (
-        // Second version with static navbar
-        // <div className="w-full h-full flex">
-        //     <div className="max-w-96 min-w-72 bg-muted p-5 border border-border h-screen">
-        //         <Link href={'/app'}>
-        //             <Return variant="secondary" />
-        //         </Link>
-        //     </div>
-        //     <div className="py-5 px-10 h-screen w-full overflow-y-auto">{children}</div>
-        // </div>
         <div className="w-full h-full flex bg-muted">
-            <div className="max-w-96 min-w-72 p-5 h-screen">
+            <div className="max-w-96 min-w-72 p-5 h-screen not-md:hidden">
                 <Link href={'/app'}>
                     <Return variant="secondary" />
                 </Link>
-                <div className="mt-5">
+                <div className="mt-5 flex flex-col gap-y-1">
+                    <Navigationitem icon={<UserRoundPen size={16} />} href="/app/settings/account">Account</Navigationitem>
                     <Navigationitem icon={<KeyRound size={16} />} href="/app/settings/api-keys">API Keys</Navigationitem>
                 </div>
             </div>
             <div className="h-screen w-full p-5 isolate overflow-y-auto">
-                <div className="h-full rounded-2xl bg-background overflow-y-auto py-8 px-15 border border-border shadow">
+                <div className="h-full rounded-2xl bg-background overflow-y-auto py-8 px-8 md:px-15 border border-border shadow relative">
+                    <Link href={'/app/settings'} className="md:hidden">
+                        <Return variant="ghost" className="mb-2">Change category</Return>
+                    </Link>
                     {children}
                 </div>
             </div>

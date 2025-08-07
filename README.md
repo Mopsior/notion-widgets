@@ -1,12 +1,10 @@
-# Error Codes
-```
-<type>/<error-code>
-```
+# Roadmap
+*sorted by implementation order*
+- [X] Mobile version for settings
 
-|Parent|Error Code|Message|
-|------|----------|--------|
-|auth|not-authenticated|Not authenticated|
-|create-widget|template-dont-exists|Template don't exists|
-|create-widget|type-not-supported|Widget type not supported|
-|create-widget|validation-error|Validation error (e.g., missing or invalid title/goal)|
-|create-widget|error-db|Error while creating widget in DB|
+- [ ] Universal account API key (not generating for every widget)
+- [ ] API key settings page
+- [ ] URL generation screen after widget creation
+
+- [ ] Precise incrementation for goal counter
+- [ ] Try changeing image to real widget in creation process

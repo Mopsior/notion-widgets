@@ -6,8 +6,8 @@ import { checkSession } from "@/lib/auth"
 import { headers } from "next/headers"
 import { catchError } from "@/lib/catch-error"
 import { toast } from "sonner"
-import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarShortcut, MenubarTrigger } from "@/components/ui/menubar"
-import { KeyRound, LogOut, Settings } from "lucide-react"
+import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarTrigger } from "@/components/ui/menubar"
+import { KeyRound, LogOut, PackagePlus, Settings } from "lucide-react"
 import Link from "next/link"
 
 export default async function App() {
@@ -36,22 +36,17 @@ export default async function App() {
         <div className="p-4">
             <Menubar className="w-fit">
                 <MenubarMenu>
-                    <MenubarTrigger>File</MenubarTrigger>
+                    <MenubarTrigger>Widgets</MenubarTrigger>
                     <MenubarContent>
-                        <MenubarItem>
-                            New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-                        </MenubarItem>
-                        <MenubarItem>New Window</MenubarItem>
-                        <MenubarSeparator />
-                        <MenubarItem>Share</MenubarItem>
-                        <MenubarSeparator />
-                        <MenubarItem>Print</MenubarItem>
+                        <Link href={'/app/new'}>
+                            <MenubarItem className="cursor-pointer"><PackagePlus />New widget</MenubarItem>
+                        </Link>
                     </MenubarContent>
                 </MenubarMenu>
                 <MenubarMenu>
                     <MenubarTrigger>Account</MenubarTrigger>
                     <MenubarContent>
-                        <Link href={'/app/settings'}>
+                        <Link href={'/app/settings/account'}>
                             <MenubarItem className="cursor-pointer"><Settings />Settings</MenubarItem>
                         </Link>
                         <Link href={'/app/settings/api-keys'}>
