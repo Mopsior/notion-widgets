@@ -32,8 +32,8 @@ export const createWidget = async (
         error.name = 'create-widget/validation-error'
         throw error
     }
-    if (data.title.length > 24) {
-        const error = new Error('Title must be less than 24 characters')
+    if (data.title.length > 20) {
+        const error = new Error('Title must be less than 20 characters')
         error.name = 'create-widget/validation-error'
         throw error
     }
@@ -58,7 +58,7 @@ export const createWidget = async (
             error.name = 'create-widget/validation-error'
             throw error
         }
-        if (field.name && field.name.length > 24) {
+        if (field.name && field.name.length > 30) {
             const error = new Error('Field name must be less than 24 characters')
             error.name = 'create-widget/validation-error'
             throw error
@@ -95,12 +95,16 @@ export const createWidget = async (
         throw error
     }
 
-    const fields = data.fields.map(field => ({
+    const fields = data.fields.map((field, index) => ({
         id: crypto.randomUUID(),
         counterId: mainId,
+        userId: session.user.id,
         name: field.name || null,
         goal: field.goal,
-        value: 0
+        value: 0,
+        order: index,
+        createdAt: new Date(),
+        updatedAt: new Date(),
     }))
 
     const [fieldsError] = await catchError(db.insert(counter_fields).values(fields))
@@ -113,7 +117,7 @@ export const createWidget = async (
 
     const [apiKeyError, apiKeyResponse] = await catchError(auth.api.createApiKey({
         body: {
-            name: `Goal Counter Widget - ${data.title}`,
+            name: `Goal Counter Widget`,
             userId: session.user.id,
         }
     }))

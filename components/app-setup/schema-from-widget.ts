@@ -1,25 +1,25 @@
-import { z } from "zod"
-import { WidgetElement } from "@/config/available-widgets"
+// import { z } from "zod"
+// import { WidgetElement } from "@/config/available-widgets"
 
-export function schemaFromWidget(widget: WidgetElement) {
-    const shape: Record<string, z.ZodType> = {}
-    widget.form.forEach((field) => {
-        let zodType
-        switch (field.type) {
-            case 'string':
-                zodType = z.string()
-                if (field.max) zodType = zodType.max(field.max)
-                if (field.optional) zodType = zodType.optional()
-                break
-            case 'number':
-                zodType = z.number()
-                break
-            case 'checkbox':
-                zodType = z.boolean().optional()
-                break
-        }
-        const name = field.codeName
-        shape[name] = zodType
-    })
-    return z.object(shape)
-}
+// export function schemaFromWidget(widget: WidgetElement) {
+//     const shape: Record<string, z.ZodType> = {}
+//     widget.form.forEach((field) => {
+//         let zodType
+//         switch (field.type) {
+//             case 'string':
+//                 zodType = z.string()
+//                 if (field.max) zodType = zodType.max(field.max)
+//                 if (field.optional) zodType = zodType.optional()
+//                 break
+//             case 'number':
+//                 zodType = z.number()
+//                 break
+//             case 'checkbox':
+//                 zodType = z.boolean().optional()
+//                 break
+//         }
+//         const name = field.codeName
+//         shape[name] = zodType
+//     })
+//     return z.object(shape)
+// }

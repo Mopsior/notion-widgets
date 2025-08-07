@@ -10,7 +10,6 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { cn } from "@/lib/utils"
-import { FormMessage } from "@/components/ui/form"
 import { NumberInput } from "@/components/number-input"
 
 interface FieldsArrayProps {

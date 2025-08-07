@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils"
 interface InputFieldProps {
     form: UseFormReturn<z.infer<typeof formSchema>>
     name: Path<z.infer<typeof formSchema>>
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
     children: React.ReactNode | ((field: any) => React.ReactNode)
     label?: string
     className?: string,

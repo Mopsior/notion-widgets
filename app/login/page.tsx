@@ -7,7 +7,7 @@ export default async function LoginPage() {
             <Card className="w-96">
                 <CardHeader>
                     <CardTitle className="text-2xl font-semibold">Log into an account</CardTitle>
-                    <CardDescription>Log in to app using Github. You don't need to create any other account!</CardDescription>
+                    <CardDescription>Log in to app using Github. You don&apos;t need to create any other account!</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <Login />

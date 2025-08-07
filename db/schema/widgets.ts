@@ -25,13 +25,18 @@ export const counter = pgTable("widget_counter", {
 export const counter_fields = pgTable("widget_counter_fields", {
     id: text('id').primaryKey(),
     counterId: text('counter_id').notNull().references(() => counter.id, { onDelete: 'cascade' }),
+    userId: text('user_id').notNull().references(() => user.id, { onDelete: 'cascade' }),
     name: text('name'), // !! can be null ex. only one field
     goal: integer('goal').notNull(),
-    value: integer('value').notNull().$defaultFn(() => 0)
+    value: integer('value').notNull().$defaultFn(() => 0),
+    createdAt: timestamp('created_at').$defaultFn(() => new Date()).notNull(),
+    updatedAt: timestamp('updated_at').$defaultFn(() => new Date()).notNull(),
+    order: integer('order').notNull().$defaultFn(() => 0),
 })
 
 export const counter_history = pgTable("widget_counter_histories", {
     id: text('id').primaryKey(),
+    userId: text('user_id').notNull().references(() => user.id, { onDelete: 'cascade' }),
     fieldId: text('field_id').notNull().references(() => counter_fields.id, { onDelete: 'cascade' }),
     value: integer('value').notNull(),
     createdAt: timestamp('created_at').$defaultFn(() => new Date()).notNull(),

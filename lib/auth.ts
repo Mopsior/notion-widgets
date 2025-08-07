@@ -17,7 +17,12 @@ export const auth = betterAuth({
     }
   },
   plugins: [
-    apiKey(),
+    apiKey({
+      rateLimit: {
+        timeWindow: 1000 * 60 * 60, // 1 hour
+        maxRequests: 100
+      }
+    }),
     nextCookies() // Must be last
   ]
 });

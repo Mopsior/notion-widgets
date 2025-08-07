@@ -14,8 +14,15 @@ export default async function App() {
     const session = await checkSession({
         headers: await headers()
     })
+    
+    if (!session || !session.user) {
+        const error = new Error('User not authenticated')
+        error.name = 'auth/not-authenticated'
+        throw error
+    }
 
-    const [error, counterWidgets] = await catchError(db.select().from(counter).where(eq(counter.userId, session!.user.id)))
+
+    const [error, counterWidgets] = await catchError(db.select().from(counter).where(eq(counter.userId, session.user.id)))
     if (error) {
         console.error(error)
         toast.error(error.message)

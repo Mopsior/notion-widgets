@@ -11,7 +11,7 @@ import { Separator } from "@/components/ui/separator"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { AccordionItem } from "@radix-ui/react-accordion"
 import { useState } from "react"
-import { useForm } from "react-hook-form"
+import { FieldErrors, useForm } from "react-hook-form"
 import React from "react"
 
 import { z } from "zod"
@@ -26,11 +26,11 @@ import { catchError } from "@/lib/catch-error"
 import { createWidget } from "@/actions/create-widget/goal-counter"
 
 export const formSchema = z.object({
-    title: z.string().min(1, "Title is required"),
+    title: z.string().min(1, "Title is required").max(20, "Title must be less than 20 characters"),
     icon: z.string().optional(),
     timeOfLife: z.enum(['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']),
     fields: z.array(z.object({
-        name: z.string().optional(),
+        name: z.string().max(30, "Field name must be less than 30 characters").optional(),
         goal: z.number({ message: 'Goal is required' }).min(1, "Goal must be a positive number").max(32000, "Goal is too big"),
     })).max(4, "You can add up to 4 fields only").min(1, "You need at least one field to create a widget")
 })
@@ -70,8 +70,9 @@ export const GoalCounterForm = () => {
         router.push('/app')
     }
 
-    const handleInvalid = (errors: any) => {
+    const handleInvalid = (errors: FieldErrors<z.infer<typeof formSchema>>) => {
         // Find the first error message in the errors object (flat search)
+        /* eslint-disable  @typescript-eslint/no-explicit-any */
         const findFirstMessage = (obj: any): string | null => {
             if (!obj) return null
             if (typeof obj.message === 'string') return obj.message
