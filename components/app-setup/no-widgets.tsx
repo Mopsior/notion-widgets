@@ -4,7 +4,7 @@ import Link from "next/link"
 
 export const NoWidgetScreen = () => {
     return (
-        <div className="w-full h-screen flex items-center justify-center flex-col font-sans gap-y-6">
+        <div className="w-full h-full flex items-center justify-center flex-col font-sans gap-y-6">
             <div className="space-y-2 px-4">
                 <h1 className="text-foreground md:text-5xl text-3xl font-bold font-sans text-center">Ready to start?</h1>
                 <p className="text-muted-foreground text-center md:text-xl text-sm font-normal ">Add new widget and instantly paste into Notion</p>

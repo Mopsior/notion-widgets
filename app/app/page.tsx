@@ -33,8 +33,8 @@ export default async function App() {
     )
 
     return (
-        <div className="p-4">
-            <Menubar className="w-fit">
+        <div className="p-4 h-real-screen">
+            <Menubar className="w-fit fixed">
                 <MenubarMenu>
                     <MenubarTrigger>Widgets</MenubarTrigger>
                     <MenubarContent>
@@ -57,6 +57,7 @@ export default async function App() {
                     </MenubarContent>
                 </MenubarMenu>
             </Menubar>
+            {/* <NoWidgetScreen /> */}
         </div>
     )
 }

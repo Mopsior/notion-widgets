@@ -12,7 +12,7 @@ export default function ErrorPage({
   reset: () => void
 }) {
     return (
-        <div className="flex flex-col items-center justify-center h-real-screen px-5 text-center gap-y-8">
+        <div className="flex flex-col items-center justify-center h-full px-5 text-center gap-y-8">
             <div>
                 <h1 className="text-4xl font-bold mb-4">Something went wrong</h1>
                 <p className="text-lg text-gray-600">Please try again later.</p>
@@ -34,7 +34,7 @@ export default function ErrorPage({
                 variant={'default'}
                 className="font-normal px-16 py-5"
                 onClick={() => reset()}
-            >Reset app</Button>
+            >Try again</Button>
         </div>
     )
 }

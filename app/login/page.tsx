@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 export default async function LoginPage() {
     return (
-        <div className="relative w-full h-screen flex justify-center items-center">
+        <div className="relative w-full h-real-screen flex justify-center items-center">
             <Card className="w-96">
                 <CardHeader>
                     <CardTitle className="text-2xl font-semibold">Log into an account</CardTitle>
