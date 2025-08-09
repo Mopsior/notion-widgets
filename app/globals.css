@@ -210,3 +210,5 @@
 @utility h-real-screen {
   height: 100dvh;
 }
+
+@custom-variant tall-ht (@media (min-height: 801px));

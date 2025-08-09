@@ -2,12 +2,13 @@
 *sorted by implementation order*
 - [X] Mobile version for settings
 
-- [ ] Universal account API key (not generating for every widget)
 - [X] API key settings page
     - [X] Showing keys
     - [X] Removing keys
     - [X] Adding new keys
-- [ ] URL generation screen after widget creation
+- [X] URL generation screen after widget creation
+    - [ ] Allow for existing tokens based on URL
+- [ ] Additional API key generation for existing widgets
 
 *randomly sorted*
 - [ ] Precise incrementation for goal counter

@@ -23,7 +23,7 @@ import { FieldsArray } from "./fields-array"
 import { RadioGroup } from "@/components/ui/radio-group"
 import { RadioLabel } from "./radio-label"
 import { catchError } from "@/lib/catch-error"
-import { createWidget } from "@/actions/create-widget/goal-counter"
+import { createWidget } from "@/actions/goal-counter/create-widget"
 
 export const formSchema = z.object({
     title: z.string().min(1, "Title is required").max(20, "Title must be less than 20 characters"),
@@ -64,10 +64,8 @@ export const GoalCounterForm = () => {
             setIsLoading(false)
             return
         }
-        setIsLoading(false)
-        console.log(response)
 
-        router.push('/app')
+        router.push(`/app/new/generate-url?widgetType=goal-counter&widgetID=${response.data.id}`)
     }
 
     const handleInvalid = (errors: FieldErrors<z.infer<typeof formSchema>>) => {
@@ -166,7 +164,6 @@ export const GoalCounterForm = () => {
     )
 }
 
-// TO BE MOVED
 const handleError = (error: Error, router: AppRouterInstance) => {
     console.error(error)
     switch (error.name) {

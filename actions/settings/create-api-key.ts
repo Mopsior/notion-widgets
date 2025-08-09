@@ -23,5 +23,7 @@ export const createAPIKey = async () => {
 
     return {
         success: true,
+        key: createKey.key,
+        id: createKey.id,
     }
 }

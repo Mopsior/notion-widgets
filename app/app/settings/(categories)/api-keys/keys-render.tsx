@@ -13,7 +13,13 @@ const fetchData = async () => {
     return await fetchAPIKeys()
 }
 
-export const KeysRender = () => {
+export const KeysRender = ({
+    className,
+    openInNewTab
+}: {
+    className?: string,
+    openInNewTab?: boolean
+}) => {
     const { data, error, isLoading, isRefetching } = useQuery({
         queryKey: ['api-keys'],
         queryFn: () => fetchData(),
@@ -37,7 +43,7 @@ export const KeysRender = () => {
                 <UserLock size={192} className="text-muted-foreground fadeout-from-top-to-bottom absolute -top-48 left-1/2 transform -translate-x-1/2" />
                 <p className="text-xl">Create first API key</p>
                 <p className="text-muted-foreground max-w-[50ch] mx-auto mt-1">API keys are used in widgets URL&apos;s to authenicate. Everyone of them allows to access your whole account and should keep it secret.</p>
-                <Link href="/app/settings/api-keys/create">
+                <Link href="/app/settings/api-keys/create" target={openInNewTab ? "_blank" : "_self"}>
                     <MotionButton
                         className="mt-4 px-8"
                         whileTap={{ scale: 0.95 }}
@@ -50,9 +56,9 @@ export const KeysRender = () => {
     }
 
     return (
-        <div className={cn("flex flex-col items-center md:justify-start md:flex-row flex-wrap w-full gap-4 md:px-15", {
+        <div className={cn("w-full gap-4 md:px-15 flex-col items-center md:justify-start md:flex-row flex flex-wrap pb-8", {
             '*:animatie-pulse *:opacity-80': isRefetching
-        })}>
+        }, className)}>
             {data.keys.map((el: APIKeyCardProps) => (
                 <APIKeyCard
                     key={el.id}
