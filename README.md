@@ -13,4 +13,6 @@
 - [ ] Precise incrementation for goal counter
 - [ ] Try changeing image to real widget in creation process
 - [ ] Move custom classes to @utilities 
-- [ ] Move from loading spinners to skeletons
+- [ ] Move from loading spinners to 
+- [ ] Fix responsivness on /login
+- [ ] Move to Notion OAuth

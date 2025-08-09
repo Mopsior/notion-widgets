@@ -42,8 +42,8 @@ export default function CreateAPIKeyPage() {
                     <Return variant="primary" />
                 </Link>
             </div>
-            <div className="w-full h-full flex flex-col items-center justify-center gap-4">
-                <Card className="gap-4 w-96">
+            <div className="w-full h-full flex flex-col items-center justify-center gap-4 not-md: px-2">
+                <Card className="gap-4 w-full md:w-96">
                     <CardHeader>
                         <CardTitle>Create API key</CardTitle>
                         <CardDescription>
