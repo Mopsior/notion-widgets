@@ -21,11 +21,6 @@ export default async function SettingsLayout({
             </div>
             <div className="h-real-screen w-full p-5 isolate overflow-y-auto">
                 <div className="h-full rounded-2xl bg-background overflow-y-auto py-8 border border-border shadow relative">
-                    <div className="px-8 md:px-15">
-                        <Link href={'/app/settings'} className="md:hidden">
-                            <Return variant="ghost" className="mb-2">Change category</Return>
-                        </Link>
-                    </div>
                     {children}
                 </div>
             </div>

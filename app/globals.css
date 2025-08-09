@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-
 @custom-variant dark (&:is(.dark *));
 
 :root {
@@ -200,6 +199,12 @@
 @utility fadeout-text {
   -webkit-mask-image: linear-gradient(to right, black 40%, transparent 100%);
   mask-image: linear-gradient(to right, black 40%, transparent 100%);
+}
+
+@utility fadeout-from-top-to-bottom {
+  opacity: 0.4;
+  mask-image: linear-gradient(to bottom, black 0%, transparent 80%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 80%);
 }
 
 @utility h-real-screen {

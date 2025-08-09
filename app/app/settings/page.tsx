@@ -21,7 +21,7 @@ export default function SettingsCategoryPage() {
 
     return (
         <div className="flex flex-col justify-between">
-            <div>
+            <div className="px-8">
                 <Navigationitem variant='ghost' icon={<UserRoundPen size={16} />} href="/app/settings/account">Account</Navigationitem>
                 <Navigationitem variant='ghost' icon={<KeyRound size={16} />} href="/app/settings/api-keys">API Keys</Navigationitem>
             </div>
