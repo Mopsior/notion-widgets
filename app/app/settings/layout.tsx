@@ -1,3 +1,4 @@
+import { Branding } from "@/components/branding";
 import { Navigationitem } from "@/components/navigation-item";
 import { Return } from "@/components/return";
 import { KeyRound, UserRoundPen } from "lucide-react";
@@ -17,6 +18,9 @@ export default async function SettingsLayout({
                 <div className="mt-5 flex flex-col gap-y-1">
                     <Navigationitem icon={<UserRoundPen size={16} />} href="/app/settings/account">Account</Navigationitem>
                     <Navigationitem icon={<KeyRound size={16} />} href="/app/settings/api-keys">API Keys</Navigationitem>
+                </div>
+                <div className="absolute bottom-5 left-9">
+                    <Branding slashColor="foreground" />
                 </div>
             </div>
             <div className="h-real-screen w-full p-5 isolate overflow-y-auto">

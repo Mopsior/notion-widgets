@@ -7,14 +7,15 @@ import { headers } from "next/headers"
 import { catchError } from "@/lib/catch-error"
 import { toast } from "sonner"
 import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarTrigger } from "@/components/ui/menubar"
-import { KeyRound, LogOut, PackagePlus, Settings } from "lucide-react"
+import { FlaskConical, KeyRound, LogOut, PackagePlus, Settings } from "lucide-react"
 import Link from "next/link"
+import { Branding } from "@/components/branding"
 
 export default async function App() {
     const session = await checkSession({
         headers: await headers()
     })
-    
+
     if (!session || !session.user) {
         const error = new Error('User not authenticated')
         error.name = 'auth/not-authenticated'
@@ -33,7 +34,7 @@ export default async function App() {
     )
 
     return (
-        <div className="p-4 h-real-screen">
+        <div className="p-4 h-real-screen relative">
             <Menubar className="w-fit fixed">
                 <MenubarMenu>
                     <MenubarTrigger>Widgets</MenubarTrigger>
@@ -58,6 +59,9 @@ export default async function App() {
                 </MenubarMenu>
             </Menubar>
             {/* <NoWidgetScreen /> */}
+            <div className="fixed bottom-5 left-5 p-2 shadow border rounded">
+                <Branding />
+            </div>
         </div>
     )
 }

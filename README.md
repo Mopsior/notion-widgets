@@ -7,7 +7,9 @@
     - [X] Removing keys
     - [X] Adding new keys
 - [X] URL generation screen after widget creation
-    - [ ] Allow for existing tokens based on URL
+    - [X] Allow for existing tokens based on URL
+
+- [ ] Widget list (/app)
 - [ ] Additional API key generation for existing widgets
 
 *randomly sorted*
@@ -17,3 +19,4 @@
 - [ ] Move from loading spinners to 
 - [ ] Fix responsivness on /login
 - [ ] Move to Notion OAuth
+- [ ] Buy domain

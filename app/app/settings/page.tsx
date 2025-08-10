@@ -1,4 +1,5 @@
 'use client'
+import { Branding } from "@/components/branding"
 import { Navigationitem } from "@/components/navigation-item"
 import { Button } from "@/components/ui/button"
 import { useMediaQuery } from "@/utils/use-media-query"
@@ -22,6 +23,7 @@ export default function SettingsCategoryPage() {
     return (
         <div className="flex flex-col justify-between">
             <div className="px-8">
+                <Branding className="mb-2" theme="muted" />
                 <Navigationitem variant='ghost' icon={<UserRoundPen size={16} />} href="/app/settings/account">Account</Navigationitem>
                 <Navigationitem variant='ghost' icon={<KeyRound size={16} />} href="/app/settings/api-keys">API Keys</Navigationitem>
             </div>
